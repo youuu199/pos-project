@@ -7,6 +7,25 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Project Setup After `git pull`
+
+This repository intentionally does not include `.env`, `vendor/`, or `node_modules/`.
+After pulling, run the following:
+
+```powershell
+git pull
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
+composer install
+php artisan key:generate
+npm install
+npm run build
+php artisan migrate
+```
+
+Notes:
+- Use `npm run dev` instead of `npm run build` during development.
+- Run `php artisan migrate` only when your database is configured and migrations are needed.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
