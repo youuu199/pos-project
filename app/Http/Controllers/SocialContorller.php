@@ -27,7 +27,6 @@ class SocialContorller extends Controller
 
         // If the social account exists (User has logged in with this social method before)
         if($account) {
-            dd($account->user->toArray());
             Auth::login($account->user);
 
             if($user->role === 'admin' || $user->role === 'superadmin') {
