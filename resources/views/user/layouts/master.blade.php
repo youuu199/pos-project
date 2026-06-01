@@ -67,14 +67,14 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle my-auto mt-2" data-bs-toggle="dropdown">
                                 <img src=" " style="width: 50px" class="img-profile  rounded-circle" alt="">
-                                <span></span>
+                                <span>{{ auth()->user()->name }}</span>
                             </a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                 <a href="#" class="dropdown-item my-2">Edit Profile</a>
                                 <a href="#" class="dropdown-item my-2">Change Password</a>
                                 <a href="#" class="dropdown-item my-2">
-                                    <form action="" method="post">
-
+                                    <form action="{{ route('logout') }}" method="post">
+                                        @csrf
                                         <input type="submit" value="Logout"
                                             class="btn btn-outline-success rounded w-100 mb-3">
                                     </form>

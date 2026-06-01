@@ -48,10 +48,10 @@
                                             Login
                                         </button>
                                         <hr>
-                                        <a href="" class="btn btn-google btn-user btn-block">
+                                        <a href="{{ url('auth/google/redirect') }}" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
-                                        <a href="" class="btn btn-facebook btn-user bg-dark btn-block">
+                                        <a href="{{ url('auth/github/redirect') }}" class="btn btn-facebook btn-user bg-dark btn-block">
                                             <i class="fa-brands fa-github fa-fw"></i> Login with Github
                                         </a>
                                     </form>

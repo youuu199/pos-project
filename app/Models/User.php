@@ -25,6 +25,9 @@ class User extends Authenticatable
         'profile',
         'phone',
         'address',
+        'social_provider',
+        'social_id',
+        'social_token'
     ];
 
     /**

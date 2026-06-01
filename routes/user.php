@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user/home', function() {
-    return view('user.dashboard.home');
+Route::group(['middleware' => 'userMiddleware', 'prefix' => 'user'], function() {
+    Route::get('/profile', function() {
+        return view('user.dashboard.home');
+    })->name('user.home');
 });

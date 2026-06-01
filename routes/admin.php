@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin/home', function() {
-    return view('admin.dashboard.home');
-})->name('admin.home');
+Route::group(['middleware' => 'adminMiddleware', 'prefix' => 'admin'], function() {
+    Route::get('/dashboard', function() {
+        return view('admin.dashboard.home');
+    })->name('admin.home');
+});
