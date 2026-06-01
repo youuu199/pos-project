@@ -22,6 +22,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_template/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 </head>
 
 <body id="page-top">
@@ -45,11 +48,11 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href=""><i class="fas fa-fw fa-table"></i><span>Dashboard </span></a>
+                <a class="nav-link" href="{{ route('admin.home') }}"><i class="fas fa-fw fa-table"></i><span>Dashboard </span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href=""><i class="fa-solid fa-circle-plus"></i></i><span>Category </span></a>
+                <a class="nav-link" href="{{ route('admin.categories') }}"><i class="fa-solid fa-circle-plus"></i></i><span>Category </span></a>
             </li>
 
             <li class="nav-item">
@@ -175,8 +178,8 @@
                 <!-- Page level custom scripts -->
                 <script src="{{ asset('admin_template/js/demo/chart-area-demo.js') }}"></script>
                 <script src="{{ asset('admin_template/js/demo/chart-pie-demo.js') }}"></script>
-
-
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                @yield('script')
 </body>
 
 </html>
