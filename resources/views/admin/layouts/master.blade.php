@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,190 +10,187 @@
 
     <title>POS Admin Dashboard</title>
 
-    <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
     <link href="{{ asset('admin_template/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
-    <!-- SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-
 </head>
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center text-decoration-none text-white"
-                href="{{ route('admin.home') }}">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion min-vh-100" id="accordionSidebar">
 
+            <a class="sidebar-brand d-flex align-items-center justify-content-center text-decoration-none text-white mt-2 mb-2"
+                href="{{ route('admin.home') }}">
                 <div class="sidebar-brand-icon">
                     <img src="{{ asset('images/resources/sate_kuu.png') }}" alt="Sate Kuu Logo"
                         class="rounded-circle shadow-sm bg-white p-1"
                         style="width: 45px; height: 45px; object-fit: cover;">
                 </div>
-
                 <div class="sidebar-brand-text mx-3 fs-5 fw-bold tracking-wide">
                     Sate Kuu
                 </div>
             </a>
 
-            <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <div hidden>{{ $route = request()->route()->getName() }}</div>
 
-            <!-- Nav Item - Dashboard -->
             <li class="nav-item @if ($route === 'admin.home') active @endif">
-                <a class="nav-link" href="{{ route('admin.home') }}"><i class="fas fa-fw fa-table"></i><span>Dashboard
-                    </span></a>
+                <a class="nav-link" href="{{ route('admin.home') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Dashboard</span>
+                </a>
             </li>
 
             <li class="nav-item @if ($route === 'admin.categories') active @endif">
-                <a class="nav-link" href="{{ route('admin.categories') }}"><i
-                        class="fa-solid fa-circle-plus"></i></i><span>Category </span></a>
+                <a class="nav-link" href="{{ route('admin.categories') }}">
+                    <i class="fa-solid fa-fw fa-circle-plus"></i>
+                    <span>Category</span>
+                </a>
             </li>
 
             <li class="nav-item @if ($route === 'admin.products.add') active @endif">
-                <a class="nav-link" href="{{ route('admin.products.add') }}"><i
-                        class="fa-solid fa-plus"></i></i><span>Add Products </span></a>
+                <a class="nav-link" href="{{ route('admin.products.add') }}">
+                    <i class="fa-solid fa-fw fa-plus"></i>
+                    <span>Add Products</span>
+                </a>
             </li>
 
-            <li class="nav-item @if ($route === 'admin.products' || $route === 'admin.products.edit' || $route === 'admin.products.view') active @endif">
-                <a class="nav-link" href="{{ route('admin.products') }}"><i
-                        class="fa-solid fa-layer-group"></i><span>Product List </span></a>
+            <li class="nav-item @if (in_array($route, ['admin.products', 'admin.products.edit', 'admin.products.view'])) active @endif">
+                <a class="nav-link" href="{{ route('admin.products') }}">
+                    <i class="fa-solid fa-fw fa-layer-group"></i>
+                    <span>Product List</span>
+                </a>
             </li>
 
+            <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-credit-card"></i></i><span>Payment Method
-                    </span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-list"></i><span>Sale Information </span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href=""><i class="fa-solid fa-cart-shopping"></i><span>Order Board
-                    </span></a>
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-fw fa-credit-card"></i>
+                    <span>Payment Method</span>
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href=""><i class="fa-solid fa-lock"></i></i></i><span>Change Password
-                    </span></a>
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-fw fa-list"></i>
+                    <span>Sale Information</span>
+                </a>
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-fw fa-cart-shopping"></i>
+                    <span>Order Board</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-fw fa-lock"></i>
+                    <span>Change Password</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <div class="mt-auto p-3 w-100">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-
-                    <span class="nav-link">
-                        <button type="submit" class="btn bg-dark text-white"><i
-                                class="fa-solid fa-right-from-bracket"></i> Logout</button>
-                    </span>
+                    <button type="submit" class="btn btn-dark text-white btn-block w-100 shadow-sm">
+                        <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
+                    </button>
                 </form>
-            </li>
-        </ul>
-        <!-- End of Sidebar -->
+            </div>
 
-        <!-- Content Wrapper -->
+        </ul>
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
-
-                    <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-
-                        <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                                <img class="img-profile rounded-circle" src="">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name ?? 'Admin' }}</span>
+                                <img class="img-profile rounded-circle" src="{{ asset('admin_template/img/undraw_profile.svg') }}">
                             </a>
-                            <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Add New Admin Account
                                 </a>
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Admin List
                                 </a>
-
-                                <a class="dropdown-item" href="">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
                                     User List
                                 </a>
-
-
-                                <a class="dropdown-item" href="">
-                                    <i class="fa-solid fa-lock fa-sm fa-fw mr-2 text-gray-400"></i></i></i>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa-solid fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Change Password
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <span class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
-                                    <form action="{{ route('logout') }}" method="post">
-                                        @csrf
-                                        <input type="submit" class="btn btn-dark text-white w-100" value="Logout">
-                                    </form>
-                                </span>
+                                <form action="{{ route('logout') }}" method="post" class="px-2">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item text-danger fw-bold rounded">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>
+                                        Logout
+                                    </button>
+                                </form>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
-                <!-- End of Topbar -->
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+                </div>
+            <footer class="sticky-footer bg-white mt-auto">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Sate Kuu 2024</span>
+                    </div>
+                </div>
+            </footer>
+            </div>
+        </div>
+    <script src="{{ asset('admin_template/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin_template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-                @yield('content')
+    <script src="{{ asset('admin_template/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-                <!-- Bootstrap core JavaScript-->
-                <script src="{{ asset('admin_template/vendor/jquery/jquery.min.js') }}"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-                    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                <script src="{{ asset('admin_template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin_template/js/sb-admin-2.min.js') }}"></script>
 
-                <!-- Core plugin JavaScript-->
-                <script src="{{ asset('admin_template/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('admin_template/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                <!-- Custom scripts for all pages-->
-                <script src="{{ asset('admin_template/js/sb-admin-2.min.js') }}"></script>
+    @yield('script')
 
-
-                <script src="{{ asset('admin_template/vendor/chart.js/Chart.min.js') }}"></script>
-
-                <!-- Page level custom scripts -->
-                <script src="{{ asset('admin_template/js/demo/chart-area-demo.js') }}"></script>
-                <script src="{{ asset('admin_template/js/demo/chart-pie-demo.js') }}"></script>
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                @yield('script')
 </body>
-
 </html>
