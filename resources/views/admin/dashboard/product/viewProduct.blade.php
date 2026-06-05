@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="d-flex mt-auto pt-3 border-top">
-                                <a href="{{ route('admin.products') }}" class="btn btn-light px-4 border me-3">
+                                <a href="{{ route('admin.products') }}" style="margin-right: 10px;" class="btn btn-light px-4 border me-3">
                                     <i class="fa-solid fa-arrow-left me-2"></i> Back to List
                                 </a>
                                 <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary px-4 shadow-sm">
