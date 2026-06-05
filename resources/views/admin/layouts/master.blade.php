@@ -34,38 +34,50 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center text-decoration-none text-white"
+                href="{{ route('admin.home') }}">
+
+                <div class="sidebar-brand-icon">
+                    <img src="{{ asset('images/resources/sate_kuu.png') }}" alt="Sate Kuu Logo"
+                        class="rounded-circle shadow-sm bg-white p-1"
+                        style="width: 45px; height: 45px; object-fit: cover;">
                 </div>
-                <div class="sidebar-brand-text mx-3">Code Lab Studio</div>
+
+                <div class="sidebar-brand-text mx-3 fs-5 fw-bold tracking-wide">
+                    Sate Kuu
+                </div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
+            <div hidden>{{ $route = request()->route()->getName() }}</div>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.home') }}"><i class="fas fa-fw fa-table"></i><span>Dashboard </span></a>
+            <li class="nav-item @if ($route === 'admin.home') active @endif">
+                <a class="nav-link" href="{{ route('admin.home') }}"><i class="fas fa-fw fa-table"></i><span>Dashboard
+                    </span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.categories') }}"><i class="fa-solid fa-circle-plus"></i></i><span>Category </span></a>
+            <li class="nav-item @if ($route === 'admin.categories') active @endif">
+                <a class="nav-link" href="{{ route('admin.categories') }}"><i
+                        class="fa-solid fa-circle-plus"></i></i><span>Category </span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href=""><i class="fa-solid fa-plus"></i></i><span>Add Products </span></a>
+            <li class="nav-item @if ($route === 'admin.products.add') active @endif">
+                <a class="nav-link" href="{{ route('admin.products.add') }}"><i
+                        class="fa-solid fa-plus"></i></i><span>Add Products </span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href=""><i class="fa-solid fa-layer-group"></i><span>Product List </span></a>
+            <li class="nav-item @if ($route === 'admin.products' || $route === 'admin.products.edit' || $route === 'admin.products.view') active @endif">
+                <a class="nav-link" href="{{ route('admin.products') }}"><i
+                        class="fa-solid fa-layer-group"></i><span>Product List </span></a>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-credit-card"></i></i><span>Payment Method </span></a>
+                <a class="nav-link" href="#"><i class="fa-solid fa-credit-card"></i></i><span>Payment Method
+                    </span></a>
             </li>
 
             <li class="nav-item">
@@ -73,11 +85,13 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href=""><i class="fa-solid fa-cart-shopping"></i><span>Order Board </span></a>
+                <a class="nav-link" href=""><i class="fa-solid fa-cart-shopping"></i><span>Order Board
+                    </span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href=""><i class="fa-solid fa-lock"></i></i></i><span>Change Password </span></a>
+                <a class="nav-link" href=""><i class="fa-solid fa-lock"></i></i></i><span>Change Password
+                    </span></a>
             </li>
 
             <li class="nav-item">
@@ -112,7 +126,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
                                 <img class="img-profile rounded-circle" src="">
                             </a>
                             <!-- Dropdown - User Information -->
