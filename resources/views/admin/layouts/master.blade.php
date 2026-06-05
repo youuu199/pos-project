@@ -17,15 +17,26 @@
         rel="stylesheet">
 
     <link href="{{ asset('admin_template/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 
 <body id="page-top">
 
+    <script>
+        if (localStorage.getItem('sidebarState') === 'toggled') {
+            document.body.classList.add('sidebar-toggled');
+        }
+    </script>
+
     <div id="wrapper">
 
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion min-vh-100" id="accordionSidebar">
+
+            <script>
+                if (localStorage.getItem('sidebarState') === 'toggled') {
+                    document.getElementById('accordionSidebar').classList.add('toggled');
+                }
+            </script>
 
             <a class="sidebar-brand d-flex align-items-center justify-content-center text-decoration-none text-white mt-2 mb-2"
                 href="{{ route('admin.home') }}">
@@ -182,22 +193,13 @@
         </div>
     <script src="{{ asset('admin_template/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin_template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
     <script src="{{ asset('admin_template/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
     <script src="{{ asset('admin_template/js/sb-admin-2.min.js') }}"></script>
-
     <script src="{{ asset('admin_template/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function() {
-            if (localStorage.getItem('sidebarState') === 'toggled') {
-                $('body').addClass('sidebar-toggled');
-                $('.sidebar').addClass('toggled');
-            }
-
-            // Toggle Button
             $('#sidebarToggle, #sidebarToggleTop').on('click', function(e) {
                 setTimeout(function() {
                     if ($('.sidebar').hasClass('toggled')) {
@@ -209,6 +211,7 @@
             });
         });
     </script>
+
     @yield('script')
 
 </body>
