@@ -190,6 +190,25 @@
     <script src="{{ asset('admin_template/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script>
+        $(document).ready(function() {
+            if (localStorage.getItem('sidebarState') === 'toggled') {
+                $('body').addClass('sidebar-toggled');
+                $('.sidebar').addClass('toggled');
+            }
+
+            // Toggle Button
+            $('#sidebarToggle, #sidebarToggleTop').on('click', function(e) {
+                setTimeout(function() {
+                    if ($('.sidebar').hasClass('toggled')) {
+                        localStorage.setItem('sidebarState', 'toggled');
+                    } else {
+                        localStorage.setItem('sidebarState', 'expanded');
+                    }
+                }, 100);
+            });
+        });
+    </script>
     @yield('script')
 
 </body>
