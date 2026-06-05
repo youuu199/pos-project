@@ -56,7 +56,7 @@
                                     <td class="col-2 align-middle">
                                         <button type="button" class="btn btn-secondary position-relative">
                                             {{ $product->stock }}
-                                            @if ($product->stock < 10)
+                                            @if ($product->stock <= 5)
                                                 <span
                                                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                                     Low

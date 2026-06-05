@@ -39,7 +39,7 @@
                                 <div class="col-sm-6">
                                     <div class="p-3 bg-light rounded-3">
                                         <span class="d-block text-muted small fw-semibold text-uppercase mb-1">Current Stock</span>
-                                        @if ($product->stock < 10)
+                                        @if ($product->stock < 5)
                                             <span class="fs-5 fw-bold text-danger">{{ $product->stock }} <small class="fw-normal fs-6 text-muted">(Low)</small></span>
                                         @else
                                             <span class="fs-5 fw-bold text-success">{{ $product->stock }}</span>
