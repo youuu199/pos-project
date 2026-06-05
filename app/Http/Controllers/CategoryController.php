@@ -9,10 +9,17 @@ use Illuminate\Validation\Rule;
 class CategoryController extends Controller
 {
     // Admin Dashboard Category Page
-    public function home()
+    public function home(Request $request)
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.dashboard.category', compact('categories'));
+        $searchCategory = $request->input('searchCategory');
+        $categories = Category::query()
+            ->when($searchCategory, function ($query, $searchCategory) {
+                return $query->where('name', 'like', '%' . $searchCategory . '%');
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(5)
+            ->withQueryString();
+        return view('admin.dashboard.category.category', compact('categories'));
     }
 
     // Create Category
@@ -34,7 +41,7 @@ class CategoryController extends Controller
         if (!$category) {
             return back()->with('error', 'အမျိုးအစားကို မတွေ့ပါ။');
         }
-        return view('admin.dashboard.categoryEdit', compact('category'));
+        return view('admin.dashboard.category.categoryEdit', compact('category'));
     }
 
     // Update Category
