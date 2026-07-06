@@ -20,7 +20,7 @@ class SocialContorller extends Controller
        // Fetch user information from the Social Provider (Google/GitHub) via Socialite
         $user = Socialite::driver($provider)->user();
 
-        // 1. Check if this specific Social Account (Provider Name + Provider ID) already exists in our database
+        // Check if this specific Social Account (Provider Name + Provider ID) already exists in our database
         $account = SocialAccount::where('provider_name', $provider)
             ->where('provider_id', $user->id)
             ->first();
@@ -36,7 +36,7 @@ class SocialContorller extends Controller
             }
         }
 
-        // 2. If the social account doesn't exist, check if there is an Existing User with the same email
+        //If the social account doesn't exist, check if there is an Existing User with the same email
         $exitUser = User::where('email', $user->email)->first();
 
         if(!$exitUser){
@@ -46,7 +46,7 @@ class SocialContorller extends Controller
             ]);
         }
 
-        // 3. Link this Social Account to the User (works for both Existing Users and New Users)
+        //Link this Social Account to the User (works for both Existing Users and New Users)
         SocialAccount::create([
             'user_id' => $exitUser->id,
             'provider_name' => $provider,
@@ -54,7 +54,7 @@ class SocialContorller extends Controller
             'provider_token' => $user->token,
         ]);
 
-        // 4. Log the user into the application
+        //Log the user into the application
         Auth::login($exitUser);
 
         if($exitUser->role === 'admin' || $exitUser->role === 'superadmin') {
