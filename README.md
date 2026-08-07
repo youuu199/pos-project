@@ -1,66 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sate Kuu - POS System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Point of Sale (POS) web application built with Laravel for managing products, orders, payments, and customer interactions.
 
-## About Laravel
+## Tech Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Backend:** Laravel 11, PHP 8.2+
+- **Frontend:** SB Admin 2 (Bootstrap 4), Chart.js, SweetAlert2
+- **Authentication:** Laravel Breeze, Laravel Sanctum, Google/GitHub OAuth (Socialite)
+- **Database:** MySQL
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Admin Dashboard
+- **Dashboard** — Stats cards (products, orders, users, revenue), recent orders, low stock alerts, monthly orders chart
+- **Category Management** — Create, edit, delete categories with search and pagination
+- **Product Management** — Add, edit, delete, view products with image upload, search, low stock filter
+- **Order Board** — View all orders, filter by status, update order status (preparing/completed/cancelled)
+- **User Management** — List users, filter by role, change user roles, delete users
+- **Sale Information** — View payment history, search by user, filter by status
+- **Contact Management** — View and manage customer inquiries
+- **Admin Profile** — Edit profile info, change password
 
-## Learning Laravel
+### Authentication
+- Custom login and registration pages
+- Google and GitHub OAuth login
+- Role-based access control (superadmin, admin, user)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Clone the repository
+   ```bash
+   git clone https://github.com/youuu199/pos-project.git
+   cd pos-project
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. Install dependencies
+   ```bash
+   composer install
+   npm install
+   ```
 
-## Laravel Sponsors
+3. Set up environment
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+4. Configure database in `.env` file
 
-### Premium Partners
+5. Run migrations and seed
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+6. Build assets
+   ```bash
+   npm run build
+   ```
 
-## Contributing
+7. Start the server
+   ```bash
+   php artisan serve
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Default Account
 
-## Code of Conduct
+| Role | Email | Password |
+|---|---|---|
+| Super Admin | superadmin@gmail.com | admin123 |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Project Structure
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── Admin/          # Profile, User controllers
+│   │   ├── AdminDashboardController.php
+│   │   ├── CategoryController.php
+│   │   ├── ContactController.php
+│   │   ├── OrderController.php
+│   │   ├── ProductController.php
+│   │   └── SaleController.php
+│   └── Models/             # 13 Eloquent models
+├── database/migrations/    # 16 migration files
+├── resources/views/
+│   └── admin/
+│       ├── dashboard/      # Admin view files
+│       └── layouts/        # Master layout
+├── routes/
+│   ├── admin.php           # Admin routes
+│   ├── user.php            # User routes
+│   └── web.php             # Main routes
+└── public/admin_template/  # SB Admin 2 template
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT License
