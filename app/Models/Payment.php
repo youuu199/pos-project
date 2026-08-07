@@ -16,4 +16,18 @@ class Payment extends Model
         'status',
     ];
 
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function paymentAccount()
+    {
+        return $this->belongsTo(PaymentAccount::class);
+    }
+
+    public function histories()
+    {
+        return $this->hasMany(PaymentHistory::class);
+    }
 }

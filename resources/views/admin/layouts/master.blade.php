@@ -83,31 +83,38 @@
 
             <hr class="sidebar-divider">
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-fw fa-credit-card"></i>
-                    <span>Payment Method</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-fw fa-list"></i>
-                    <span>Sale Information</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item @if (in_array($route, ['admin.orders', 'admin.orders.view'])) active @endif">
+                <a class="nav-link" href="{{ route('admin.orders') }}">
                     <i class="fa-solid fa-fw fa-cart-shopping"></i>
                     <span>Order Board</span>
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-fw fa-lock"></i>
-                    <span>Change Password</span>
+            <li class="nav-item @if (in_array($route, ['admin.sales', 'admin.sales.view'])) active @endif">
+                <a class="nav-link" href="{{ route('admin.sales') }}">
+                    <i class="fa-solid fa-fw fa-list"></i>
+                    <span>Sale Information</span>
+                </a>
+            </li>
+
+            <li class="nav-item @if (in_array($route, ['admin.users', 'admin.users.view'])) active @endif">
+                <a class="nav-link" href="{{ route('admin.users') }}">
+                    <i class="fa-solid fa-fw fa-users"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
+            <li class="nav-item @if (in_array($route, ['admin.contacts', 'admin.contacts.view'])) active @endif">
+                <a class="nav-link" href="{{ route('admin.contacts') }}">
+                    <i class="fa-solid fa-fw fa-envelope"></i>
+                    <span>Contacts</span>
+                </a>
+            </li>
+
+            <li class="nav-item @if ($route === 'admin.profile') active @endif">
+                <a class="nav-link" href="{{ route('admin.profile') }}">
+                    <i class="fa-solid fa-fw fa-user"></i>
+                    <span>Profile</span>
                 </a>
             </li>
 
@@ -146,23 +153,19 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('admin.profile') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Add New Admin Account
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Admin List
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('admin.users') }}">
                                     <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
                                     User List
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('admin.users') }}?role=admin">
+                                    <i class="fas fa-user-shield fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Admin List
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.profile') }}#password">
                                     <i class="fa-solid fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Change Password
                                 </a>

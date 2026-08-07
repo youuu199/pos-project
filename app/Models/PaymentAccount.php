@@ -15,4 +15,8 @@ class PaymentAccount extends Model
         'account_number',
     ];
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
