@@ -11,16 +11,27 @@ class ProductController extends Controller
     // Admin Dashboard Product Page
     public function home(Request $request)
     {
-        if($request['searchProduct'] === 'all' || $request['searchProduct'] === null) {
-            $products = Product::orderBy('created_at', 'desc')->paginate(5);
-            return view('admin.dashboard.product.productList', compact('products'));
-        } elseif($request['searchProduct'] === 'low') {
-            $products = Product::where('stock', '<=', 5)->orderBy('created_at', 'desc')->paginate(5);
-            return view('admin.dashboard.product.productList', compact('products'));
-        } else {
-            $products = Product::where('name', 'like', '%' . $request['searchProduct'] . '%')->orderBy('created_at', 'desc')->paginate(5);
-            return view('admin.dashboard.product.productList', compact('products'));
+        $query = Product::with('category');
+
+        // Search by name
+        if ($request->filled('searchProduct') && $request->searchProduct !== 'all' && $request->searchProduct !== 'low') {
+            $query->where('name', 'like', '%' . $request->searchProduct . '%');
         }
+
+        // Filter low stock
+        if ($request->input('searchProduct') === 'low') {
+            $query->where('stock', '<=', 5);
+        }
+
+        // Filter by category
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->category);
+        }
+
+        $products = $query->orderBy('created_at', 'desc')->paginate(5)->withQueryString();
+        $categories = Category::orderBy('name')->get();
+
+        return view('admin.dashboard.product.productList', compact('products', 'categories'));
     }
 
     // Admin Dashboard Add Product Page

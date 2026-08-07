@@ -18,9 +18,18 @@
                 <a href="{{ route('admin.products', ['searchProduct' => 'low']) }}"
                     class=" btn btn-outline-danger  rounded shadow-sm">Low Amount Product List</a>
             </div>
-            <div class="">
+            <div class="d-flex">
+                <form action="{{ route('admin.products') }}" method="get" class="form-inline mr-2">
+                    <select name="category" class="form-control rounded shadow-sm mr-2" onchange="this.form.submit()">
+                        <option value="">All Categories</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </form>
                 <form action="{{ route('admin.products') }}" method="get">
-
                     <div class="input-group">
                         <input type="text" name="searchProduct" value="{{ request('searchProduct') }}"
                             class=" form-control" placeholder="Enter Search Product Name">
