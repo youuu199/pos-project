@@ -49,7 +49,7 @@
                                 <tr>
                                     <td class="align-middle">
                                         <img src="{{ asset('images/products/' . $product->image) }}"
-                                            class="img-thumbnail rounded shadow-sm" style="width:100px" alt="">
+                                            class="img-thumbnail rounded shadow-sm" style="width:100px; height:100px; object-fit:cover;" alt="">
                                     </td>
                                     <td class="align-middle"> {{ $product->name }}</td>
                                     <td class="align-middle"> {{ $product->price }} mmk</td>
