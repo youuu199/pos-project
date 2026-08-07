@@ -157,7 +157,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.users') }}">
+                                <a class="dropdown-item" href="{{ route('admin.users') }}?role=user">
                                     <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
                                     User List
                                 </a>
