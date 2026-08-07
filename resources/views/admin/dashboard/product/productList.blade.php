@@ -12,7 +12,7 @@
         <div class=" d-flex justify-content-between my-2">
             <div class="">
                 <button class=" btn btn-secondary rounded shadow-sm"> <i class="fa-solid fa-database"></i>
-                    Product Count ( {{ $products->count() }} ) </button>
+                    Product Count ( {{ $products->total() }} ) </button>
                 <a href="{{ route('admin.products', ['searchProduct' => 'all']) }}"
                     class=" btn btn-outline-primary  rounded shadow-sm">All Products</a>
                 <a href="{{ route('admin.products', ['searchProduct' => 'low']) }}"
